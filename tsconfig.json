@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": ".",
+    "target": "ES2020",
+    "module": "ESNext",
+    "baseUrl": ".",
+    "sourceMap": false,
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "noLib": false, // 不处理类库
+    /* Bundler mode */
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true, // 支持es6,commonjs模块
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "removeComments": false,
+    "noEmit": true,
+    "jsx": "preserve", // jsx 不转
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "declaration": false, // 默认不要声明文件 
+    "noImplicitAny": true, // 支持类型不标注可以默认any
+  },
+  "paths": {
+    "@element-plus/*": [
+      "packages/*"
+    ]
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "typings/shims-vue.d.ts",
+    "typings/components.d.ts",
+    "typings/env.d.ts",
+
+    // playground
+    "play/main.ts",
+    "play/env.d.ts",
+    "play/src/**/*"
+  ],
+  "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"],
+  
+}
