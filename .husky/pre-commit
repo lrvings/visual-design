@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+#lint-staged 只检查那些被改动了的文件
+#pretty-quick 在更改的文件上运行 Prettier 格式化
+#husky 通过提供 Git Hooks 能力执行以上操作
+pnpm exec lint-staged
+pnpm exec pretty-quick --staged
+
