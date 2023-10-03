@@ -19,12 +19,5 @@ export default defineConfig(async ({ mode }) => {
       host: true,
       https: !!env.HTTPS,
     },
-    css: {
-      preprocessorOptions: {
-        sass: {
-          additionalData: '@use "./src/styles/index.scss" as *;',
-        },
-      },
-    },
   }
 })

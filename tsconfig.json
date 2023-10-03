@@ -9,10 +9,10 @@
     },
     {
       "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.vite-config.json"
     }
-    // {
-    //   "path": "./tsconfig.vite-config.json"
-    // },
     // {
     //   "path": "./tsconfig.vitest.json" // 组件测试部分
     // }

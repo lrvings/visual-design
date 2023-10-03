@@ -1,9 +1,5 @@
 {
-  "name": "visual-design",
-  "version": "0.0.1",
   "private": true,
-  "type": "module",
-  "author": "owen",
   "scripts": {
     "dev": "pnpm -C play dev",
     "typecheck": "run-p typecheck:web typecheck:play typecheck:node typecheck:vite-config typecheck:vitest",
@@ -24,8 +20,10 @@
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
+    "@pnpm/find-workspace-packages": "^6.0.9",
     "@types/gulp": "^4.0.14",
     "@types/node": "*",
+    "@visual-design/build-utils": "workspace:*",
     "@visual-design/eslint-config": "workspace:*",
     "@vitejs/plugin-vue": "^4.2.3",
     "husky": "^8.0.0",
