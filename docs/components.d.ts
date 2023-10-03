@@ -10,6 +10,8 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VpApp: typeof import('./.vitepress/vitepress/components/vp-app.vue')['default']
+    VpContent: typeof import('./.vitepress/vitepress/components/vp-content.vue')['default']
     VpDemo: typeof import('./.vitepress/vitepress/components/vp-demo.vue')['default']
+    VpSidebar: typeof import('./.vitepress/vitepress/components/vp-sidebar.vue')['default']
   }
 }

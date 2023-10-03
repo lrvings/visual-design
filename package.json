@@ -2,13 +2,20 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -C play dev",
+    "build": "pnpm run -C internal/build start",
+    "build:theme": "pnpm run -C packages/theme-chalk build",
     "typecheck": "run-p typecheck:web typecheck:play typecheck:node typecheck:vite-config typecheck:vitest",
     "typecheck:web": "vue-tsc -p tsconfig.web.json --composite false --noEmit",
     "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
     "typecheck:play": "vue-tsc -p tsconfig.play.json --composite false --noEmit",
     "typecheck:vite-config": "vue-tsc -p tsconfig.vite-config.json --composite false --noEmit",
     "typecheck:vitest": "vue-tsc -p tsconfig.vitest.json --composite false --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docs:dev": "pnpm run -C docs dev",
+    "docs:build": "pnpm run -C docs build",
+    "docs:serve": "pnpm run -C docs serve",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
+    "clean:dist": "rimraf dist"
   },
   "dependencies": {
     "@visual-design/components": "workspace:*",
@@ -21,7 +28,9 @@
   },
   "devDependencies": {
     "@pnpm/find-workspace-packages": "^6.0.9",
+    "@types/fs-extra": "^11.0.2",
     "@types/gulp": "^4.0.14",
+    "@types/lodash": "^4.14.199",
     "@types/node": "*",
     "@visual-design/build-utils": "workspace:*",
     "@visual-design/eslint-config": "workspace:*",

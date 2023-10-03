@@ -1,13 +1,11 @@
+import { defineConfig } from 'vitepress'
 import { sidebars } from './config/sidebars'
 import { nav } from './config/nav'
-import { defineConfig } from 'vitepress'
-import { docsDirName } from '@visual-design/build-utils'
-// console.log(sidebars)
 export default defineConfig({
   title: 'Visual Desgin',
   lang: 'zh-CN',
   lastUpdated: true,
-  // srcDir: '.',
+  cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   themeConfig: {
     logo: '/logo.png',
@@ -17,6 +15,19 @@ export default defineConfig({
     sidebar: sidebars,
     // 启用页面滚动效果
     nav,
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2023-present wenju Li',
+    },
+
+    search: {
+      provider: 'algolia',
+      options: {
+        appId: '8J64VVRP8K',
+        apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+        indexName: 'vitepress',
+      },
+    },
   },
   markdown: {
     lineNumbers: true,
@@ -27,7 +38,7 @@ export default defineConfig({
     },
     build: {
       minify: 'terser',
-      chunkSizeWarningLimit: Infinity,
+      chunkSizeWarningLimit: Number.POSITIVE_INFINITY,
     },
     json: {
       stringify: true,

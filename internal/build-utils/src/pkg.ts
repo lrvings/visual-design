@@ -1,20 +1,20 @@
-import findWorkspacePackages from '@pnpm/find-workspace-packages'
-import { projRoot } from './paths'
+// import findWorkspacePackages from '@pnpm/find-workspace-packages'
+// import { projRoot } from './paths'
 
-import type { ProjectManifest } from '@pnpm/types'
+// import type { ProjectManifest } from '@pnpm/types'
 
-export const getWorkspacePackages = () => findWorkspacePackages(projRoot)
-export const getWorkspaceNames = async (dir = projRoot) => {
-  const pkgs = await findWorkspacePackages(projRoot)
-  return pkgs
-    .filter((pkg) => pkg.dir.startsWith(dir))
-    .map((pkg) => pkg.manifest.name)
-    .filter((name): name is string => !!name)
-}
+// export const getWorkspacePackages = () => findWorkspacePackages(projRoot)
+// export const getWorkspaceNames = async (dir = projRoot) => {
+//   const pkgs = await findWorkspacePackages(projRoot)
+//   return pkgs
+//     .filter((pkg) => pkg.dir.startsWith(dir))
+//     .map((pkg) => pkg.manifest.name)
+//     .filter((name): name is string => !!name)
+// }
 
 export const getPackageManifest = (pkgPath: string) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
-  return require(pkgPath) as ProjectManifest
+  return require(pkgPath)
 }
 
 export const getPackageDependencies = (

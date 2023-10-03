@@ -1,3 +1,3 @@
 # Icon
 
-Element Plus provides a set of common icons.
+<v-icon> Icon </v-icon>
