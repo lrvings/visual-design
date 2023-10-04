@@ -19,9 +19,9 @@ defineProps({
 
 <style scoped lang="scss">
 .vi-gradient-card {
+  position: relative;
   width: 200px;
   height: 100px;
-  position: relative;
   border-radius: 10px;
 }
 
@@ -32,7 +32,6 @@ defineProps({
   background-image: var(--bg), var(--border);
   background-origin: border-box;
   background-clip: content-box, border-box;
-
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
 }
 .a {
@@ -122,5 +121,73 @@ defineProps({
   border: 4px solid;
   border-image: linear-gradient(270deg, #18f77f, #17ffff) 1 1;
   clip-path: inset(0 round 10px);
+}
+.ground-glass {
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.conic-gradient {
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  color: #fff;
+  font-weight: 600;
+  --conic-gradient-color1: #ff2770;
+  --conic-gradient-color2: #45f3ff;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-conic-gradient(
+      from var(--a),
+      var(--conic-gradient-color1) 0%,
+      var(--conic-gradient-color1) 5%,
+      transparent 0%,
+      transparent 40%,
+      var(--conic-gradient-color1) 50%
+    );
+    animation: animateAngle 4s linear infinite;
+    // background: repeating-conic-gradient(
+    //   from var(--a),
+    //   var(--conic-gradient-color2) 0%,
+    //   var(--conic-gradient-color2) 5%,
+    //   transparent 0%,
+    //   transparent 40%,
+    //   var(--conic-gradient-color2) 50%
+    // );
+    // animation: animateAngle 4s linear infinite;
+    // animation-delay: -1s;
+    border-radius: inherit;
+    z-index: -1;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: rgba(126, 145, 169, 1);
+    border-radius: 10px;
+    border: 8px solid #455364;
+    z-index: -1;
+  }
+}
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes animateAngle {
+  0% {
+    --a: 0deg;
+  }
+  100% {
+    --a: 360deg;
+  }
 }
 </style>

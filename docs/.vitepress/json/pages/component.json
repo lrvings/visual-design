@@ -3,20 +3,24 @@
     "text": "Basic",
     "items": [
       {
-        "text": "Button",
+        "text": "Button 按钮",
         "link": "/component/button"
       },
       {
-        "text": "Icon",
+        "text": "Icon 图标",
         "link": "/component/icon"
       },
       {
-        "text": "Card",
+        "text": "Card 卡片",
         "link": "/component/card"
       },
       {
-        "text": "Other",
+        "text": "Other 其他",
         "link": "/component/other"
+      },
+      {
+        "text": "Weather 天气",
+        "link": "/component/weather"
       }
     ]
   }

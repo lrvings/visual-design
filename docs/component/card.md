@@ -15,7 +15,18 @@
     <v-gradient-card styleType='semicircle'/>
   </v-col>
   <v-col :span="8">
-  <v-gradient-card styleType='clip-path'/>
+    <v-gradient-card styleType='clip-path'/>
+  </v-col>
+   <v-col :span="8">
+   <v-gradient-card styleType='ground-glass'/>
+  </v-col>
+</v-row>
+
+<v-row >
+  <v-col :span="8">
+    <v-gradient-card styleType='conic-gradient'>conic-gradient</v-gradient-card>
+  </v-col>
+  <v-col :span="8">
   </v-col>
    <v-col :span="8">
   </v-col>

@@ -1,0 +1,118 @@
+.
+<template>
+  <div class="flow-line">
+    <div class="square">
+      <span style="--i: 0" />
+      <span style="--i: 1" />
+      <span style="--i: 2" />
+      <span style="--i: 3" />
+    </div>
+    <div class="square">
+      <span style="--i: 0" />
+      <span style="--i: 1" />
+      <span style="--i: 2" />
+      <span style="--i: 3" />
+    </div>
+    <div class="square">
+      <span style="--i: 0" />
+      <span style="--i: 1" />
+      <span style="--i: 2" />
+      <span style="--i: 3" />
+    </div>
+    <div class="square">
+      <span style="--i: 0" />
+      <span style="--i: 1" />
+      <span style="--i: 2" />
+      <span style="--i: 3" />
+    </div>
+  </div>
+</template>
+<script setup lang="ts">
+defineOptions({
+  name: 'VFlowline',
+})
+</script>
+<style scope lang="scss">
+.flow-line {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  // background-color: #000;
+  .square {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    span {
+      position: absolute;
+      inset: 10px;
+      overflow: hidden;
+      transform: rotate(calc(90deg * var(--i)));
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #0f0;
+        transform: translateX(-100%);
+        animation: animateFlow 4s linear infinite;
+        animation-delay: calc(1s * var(--i));
+      }
+
+      @keyframes animateFlow {
+        0% {
+          transform: translateX(-100%);
+        }
+
+        50%,
+        100% {
+          transform: translateX(100%);
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #0f0;
+      box-shadow: 0 0 0 8px #0f03, 0 0 0 15px #0f01;
+      animation: animateSquare 4s linear infinite;
+    }
+
+    &:nth-child(2) {
+      transform: translate(-25%, -25%) rotateX(180deg);
+      filter: hue-rotate(60deg);
+    }
+    &:nth-child(3) {
+      transform: translate(25%, 25%) rotate(180deg);
+      filter: hue-rotate(180deg);
+    }
+    &:nth-child(4) {
+      transform: translate(50%, 50%) rotate(360deg);
+      filter: hue-rotate(270deg);
+    }
+
+    @keyframes animateSquare {
+      0% {
+        transform: translate(2px, 2px);
+      }
+      25% {
+        transform: translate(178px, 2px);
+      }
+      50% {
+        transform: translate(178px, 178px);
+      }
+      75% {
+        transform: translate(2px, 178px);
+      }
+
+      100% {
+        transform: translate(2px, 2px);
+      }
+    }
+  }
+}
+</style>

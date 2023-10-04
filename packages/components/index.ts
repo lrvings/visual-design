@@ -3,7 +3,8 @@ import { VIcon } from './icon'
 import { VRow } from './row'
 import { VCol } from './col'
 import { VGradientCard } from './card'
-import { VLantern, VSatellite, VWifi } from './demo'
+import { VWeather } from './weather'
+import { VFlowLine, VLantern, VSatellite, VWifi, VWordCloud } from './demo'
 import type { App } from 'vue'
 
 const components = [
@@ -14,7 +15,10 @@ const components = [
   VLantern,
   VSatellite,
   VWifi,
+  VFlowLine,
   VGradientCard,
+  VWeather,
+  VWordCloud,
 ]
 
 const install = function (app: App) {
