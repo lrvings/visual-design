@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm -C play dev",
+    "gen": "bash ./scripts/gc.sh",
     "build": "pnpm run -C internal/build start",
     "build:theme": "pnpm run -C packages/theme-chalk build",
     "typecheck": "run-p typecheck:web typecheck:play typecheck:node typecheck:vite-config typecheck:vitest",
