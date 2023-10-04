@@ -1,0 +1,126 @@
+<template>
+  <div class="vi-gradient-card" :class="styleType">
+    <slot />
+  </div>
+</template>
+
+<script setup lang="ts">
+defineOptions({
+  name: 'VGradientCard',
+})
+
+defineProps({
+  styleType: {
+    type: String,
+    default: 'default',
+  },
+})
+</script>
+
+<style scoped lang="scss">
+.vi-gradient-card {
+  width: 200px;
+  height: 100px;
+  position: relative;
+  border-radius: 10px;
+}
+
+.default {
+  --bg: linear-gradient(180deg, rgba(52, 101, 117, 0.1) 0%, #1a283b 100%);
+  --border: linear-gradient(270deg, #455364, #aec9e9, #455364);
+  border: 1px solid transparent;
+  background-image: var(--bg), var(--border);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+}
+.a {
+  background: #aec9e9;
+  z-index: 1;
+  &::after {
+    content: '';
+    position: absolute;
+    /* 设置层级为-1，避免遮挡内容 */
+    z-index: -1;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background: linear-gradient(180deg, #27a6a7 0%, #054146 100%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+  }
+}
+
+.mask {
+  --border-radius: 10px;
+  --border-width: 1px;
+  --border-color: linear-gradient(
+    270deg,
+    rgba(69, 83, 100, 1),
+    rgba(126, 145, 169, 1),
+    rgba(69, 83, 100, 1)
+  );
+  position: relative;
+  color: #fff;
+  border-radius: var(--border-radius);
+  background: rgba(38, 70, 93, 0.2);
+  backdrop-filter: blur(10px);
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--border-width);
+    border-radius: var(--border-radius);
+    background: var(--border-color);
+    /* 随便定义一个颜色 */
+    --mask-bg: linear-gradient(red, red);
+    /* 类似background-clip */
+    --mask-clip: content-box, padding-box;
+    /* mask允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域 */
+    /* mask-image类似background-image 设置了用作元素蒙版层的图像，默认值为none，值为透明图片，或透明渐变 */
+    -webkit-mask-image: var(--mask-bg), var(--mask-bg);
+    /* 默认值为border-box，可选值与background-origin相同 */
+    -webkit-mask-clip: var(--mask-clip);
+    /* exclude排除，只显示不重合的地方,Firefox支持4个属性 */
+    mask-composite: exclude;
+    /* 只显示下方遮罩，重合的地方不显示 */
+    -webkit-mask-composite: destination-out;
+  }
+}
+
+.semicircle {
+  border-radius: 10px;
+  box-shadow: 4px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid;
+    border-image: linear-gradient(
+        115deg,
+        #4fcf70,
+        #fad648,
+        #a767e5,
+        #12bcfe,
+        #44ce7b
+      )
+      2 2;
+  }
+}
+
+.clip-path {
+  border: 4px solid;
+  border-image: linear-gradient(270deg, #18f77f, #17ffff) 1 1;
+  clip-path: inset(0 round 10px);
+}
+</style>

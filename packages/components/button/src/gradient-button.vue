@@ -1,7 +1,5 @@
 <template>
-  <div class="gradient-button">
-    <div class="gradient-button__shadow" />
-  </div>
+  <button class="gradient-button">button</button>
 </template>
 
 <script setup lang="ts">
@@ -11,60 +9,53 @@ defineOptions({
 </script>
 
 <style scoped lang="scss">
-.gradient-button,
-.gradient-button__shadow {
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 50px;
-  width: 300px;
-  height: 100px;
-  font-size: 30px;
-  text-align: center;
-  line-height: 100px;
-  background: linear-gradient(-45deg, #ffa63d, #ff3d77, #338aff, #3cf0c5);
-  background-size: 600%;
-  -webkit-animation: anime 6s linear infinite;
-  animation: anime 6s linear infinite;
-  cursor: pointer;
+$border-radius: 20px;
+$border-width: 2px;
+$border-color: linear-gradient(
+  270deg,
+  var(--vi-color-warning) 20%,
+  var(--vi-color-primary) 60%,
+  var(--vi-color-warning) 20%
+);
+.gradient-button {
+  width: 168px;
+  height: 40px;
+  position: relative;
+  color: #fff;
+  font-size: 18px;
+  border-radius: $border-radius;
+  transition: all 0.5s ease-in-out;
+  background: rgb(5, 21, 36, 0.3);
+  backdrop-filter: blur(10px);
 
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: $border-width;
+    border-radius: $border-radius;
+    background: $border-color;
+    /* 随便定义一个颜色 */
+    --mask-bg: linear-gradient(red, red);
+    /* 类似background-clip */
+    --mask-clip: content-box, padding-box;
+    /* mask允许使用者通过遮罩或者裁切特定区域的图片的方式来隐藏一个元素的部分或者全部可见区域 */
+    /* mask-image类似background-image 设置了用作元素蒙版层的图像，默认值为none，值为透明图片，或透明渐变 */
+    -webkit-mask-image: var(--mask-bg), var(--mask-bg);
+    /* 默认值为border-box，可选值与background-origin相同 */
+    -webkit-mask-origin: var(--mask-clip);
+    /* 默认值为border-box，可选值与background-origin相同 */
+    -webkit-mask-clip: var(--mask-clip);
+    /* exclude排除，只显示不重合的地方,Firefox支持4个属性 */
+    mask-composite: exclude;
+    /* 只显示下方遮罩，重合的地方不显示 */
+    -webkit-mask-composite: destination-out;
+  }
   &:hover {
-    transform: translateY(-6px);
-  }
-  transition: all 0.3s linear;
-  z-index: 1;
-}
-.gradient-button__shadow {
-  position: absolute;
-  margin-top: -70px;
-  z-index: -1;
-  filter: blur(30px);
-  opacity: 0.8;
-}
-
-@keyframes anime {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@-webkit-keyframes anime {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
+    filter: brightness(1.5);
   }
 }
 </style>

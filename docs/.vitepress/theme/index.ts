@@ -1,20 +1,13 @@
 import DefaultTheme from 'vitepress/theme'
 import VisualDesign from '@visual-design/components/index'
+import '@visual-design/theme-chalk/src/index.scss'
 
-import { globals } from '../vitepress'
 import { define } from '../utils/types'
-import 'uno.css'
-// import './style.css'
+// import 'uno.css'
 import type { Theme } from 'vitepress'
 export default define<Theme>({
   extends: DefaultTheme,
-  enhanceApp: ({ app, siteData }) => {
+  enhanceApp: ({ app }) => {
     app.use(VisualDesign)
-    // eslint-disable-next-line no-console
-    console.log(siteData.value)
-
-    globals.forEach(([name, Comp]) => {
-      app.component(name, Comp)
-    })
   },
 })

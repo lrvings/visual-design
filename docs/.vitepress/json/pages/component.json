@@ -9,6 +9,14 @@
       {
         "text": "Icon",
         "link": "/component/icon"
+      },
+      {
+        "text": "Card",
+        "link": "/component/card"
+      },
+      {
+        "text": "Other",
+        "link": "/component/other"
       }
     ]
   }
