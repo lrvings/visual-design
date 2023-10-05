@@ -10,7 +10,7 @@ import { parallel } from 'gulp'
 import glob from 'fast-glob'
 import { camelCase, upperFirst } from 'lodash'
 import { epOutput, epRoot, localeRoot } from '@visual-design/build-utils'
-// import { version } from '../../../../packages/components/package.json'
+import { version } from '../../../../packages/components/package.json'
 import { VisualDesignAlias } from '../plugins/visual-design-alias'
 import {
   formatBundleFilename,
@@ -20,8 +20,8 @@ import {
 } from '../utils'
 import { target } from '../build-info'
 import type { Plugin } from 'rollup'
-
-const banner = `/*! ${'visual Design'} v${'1'} */\n`
+// 生成适合浏览器环境的文件
+const banner = `/*! ${'visual Design'} v${version} */\n`
 
 async function buildFullEntry(minify: boolean) {
   const plugins: Plugin[] = [

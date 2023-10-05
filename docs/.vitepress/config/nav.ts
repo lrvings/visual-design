@@ -1,5 +1,4 @@
 // Mapping the first sub link to the nav link to avoid 404 error.
-// import pk from '@visual-design/components/package.json'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 const pkg = require('@visual-design/components/package.json')

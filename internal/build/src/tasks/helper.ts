@@ -45,7 +45,7 @@ const reDocUrl: ReDocUrl = (fileName, header) => {
 }
 
 const reWebTypesSource: ReWebTypesSource = (title) => {
-  const symbol = `El${removeTag(title)
+  const symbol = `V${removeTag(title)
     .replaceAll(/-/g, ' ')
     .replaceAll(/^\w|\s+\w/g, (item) => {
       return item.trim().toUpperCase()

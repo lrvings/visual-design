@@ -50,18 +50,18 @@ export default series(
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
   // runTask: 在 internal/build目录下，使用child_process执行 pnpm run start xxx 即执行src/tasks中的gulp的xxx任务
   parallel(
-    runTask('buildModules')
-    // runTask('buildFullBundle'),
-    // runTask('generateTypesDefinitions'),
-    // runTask('buildHelper')
-    // series(
-    //   withTaskName('buildThemeChalk', () =>
-    //     run('pnpm run -C packages/theme-chalk build')
-    //   ),
-    //   copyFullStyle
-    // )
-  )
+    runTask('buildModules'),
+    runTask('buildFullBundle'),
+    // runTask('generateTypesDefinitions')
+    runTask('buildHelper'),
+    series(
+      withTaskName('buildThemeChalk', () =>
+        run('pnpm run -C packages/theme-chalk build')
+      ),
+      copyFullStyle
+    )
+  ),
 
-  // parallel(copyTypesDefinitions, copyFiles)
+  parallel(copyTypesDefinitions, copyFiles)
 )
 export * from './src'

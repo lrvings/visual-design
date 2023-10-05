@@ -1,13 +1,10 @@
 <template>
   <section class="cloud-bed">
     <div ref="cloudBox" class="cloud-box">
-      <span
-        v-for="(item, index) in state.dataList"
-        :key="index"
-        @click="methods.getDataInfo(item)"
-      >
+      <span v-for="(item, index) in state.dataList" :key="index">
         {{ item.name }}
       </span>
+      <!-- @click="methods.getDataInfo(item)" -->
     </div>
   </section>
 </template>
@@ -64,9 +61,7 @@ const state = reactive({
 
 const methods = {
   // 获取点击文本信息
-  getDataInfo(item: any) {
-    console.log(item, 'item')
-  },
+  // getDataInfo() {},
   initWordCloud() {
     if (!cloudBox.value) {
       return
@@ -261,42 +256,3 @@ onUnmounted(() => {
   // cancelAnimationFrame(state.timer)
 })
 </script>
-
-<style scoped lang="scss">
-.cloud-bed {
-  width: 300px;
-  height: 300px;
-  overflow: hidden;
-}
-.cloud-box {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: #00000000;
-}
-.cloud-box span {
-  position: absolute;
-  padding: 3px 6px;
-  top: 0px;
-  font-weight: bold;
-  text-decoration: none;
-  left: 0px;
-  color: transparent;
-  min-width: 90px;
-  color: #ffffff;
-  height: 32px;
-  text-align: center;
-  background: #0a3c57;
-  border: 2px solid rgba(56, 119, 242, 1);
-  box-shadow: inset 0px 0px 12px 0px rgba(0, 201, 255, 0.6);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* line-height: 50px;
-      overflow:hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis; */
-}
-</style>
