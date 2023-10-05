@@ -9,7 +9,7 @@ export const run = async (command: string, cwd: string = projRoot) =>
     consola.info(`run: ${chalk.green(`${cmd} ${args.join(' ')}`)}`)
     const app = spawn(cmd, args, {
       cwd,
-      stdio: 'inherit',
+      stdio: 'inherit', //将子进程的输出共享给父进程
       shell: process.platform === 'win32',
     })
 

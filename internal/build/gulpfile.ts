@@ -29,7 +29,7 @@ export const copyTypesDefinitions: TaskFunction = (done) => {
   const src = path.resolve(buildOutput, 'types', 'packages')
   const copyTypes = (module: Module) =>
     withTaskName(`copyTypes:${module}`, () =>
-      copy(src, buildConfig[module].output.path, { recursive: true })
+      copy(src, buildConfig[module].output.path, { dereference: true })
     )
 
   return parallel(copyTypes('esm'), copyTypes('cjs'))(done)
@@ -42,11 +42,11 @@ export const copyFullStyle = async () => {
     path.resolve(epOutput, 'dist/index.css')
   )
 }
-// tslint: disable
+
 export default series(
   // 1.清除dist目录
   withTaskName('clean', () => run('pnpm run clean')),
-  // 2.创建dist/element-plus目录
+  // 2.创建dist/visual-design目录
   withTaskName('createOutput', () => mkdir(epOutput, { recursive: true })),
   // runTask: 在 internal/build目录下，使用child_process执行 pnpm run start xxx 即执行src/tasks中的gulp的xxx任务
   parallel(
@@ -64,5 +64,4 @@ export default series(
 
   // parallel(copyTypesDefinitions, copyFiles)
 )
-
 export * from './src'

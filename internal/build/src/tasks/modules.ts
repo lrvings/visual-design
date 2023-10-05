@@ -12,7 +12,10 @@ import { VisualDesignAlias } from '../plugins/visual-design-alias'
 import { buildConfigEntries, target } from '../build-info'
 
 import type { OutputOptions } from 'rollup'
-
+const __defProp = Object.defineProperty
+const __name = (target: any, value: any) =>
+  __defProp(target, 'name', { value, configurable: true })
+globalThis.__name = __name
 // 将packages下的所有js、ts、vue文件使用rollup打包，保持原有文件目录结构
 export const buildModules = async () => {
   // excludeFiles 排除['node_modules', 'test', 'mock', 'gulpfile', 'dist']下的文件
